@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "a3349488-fa60-473e-b2c8-36403b53d3ed",
+		"name": "Dummy-TestSuite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get employee list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "456bf8aa-7677-4b5e-b5d2-c99aeff37f4a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data[1].employee_name).to.eql(\"Garrett Winters\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{dummy_url}}/employees",
+					"host": [
+						"{{dummy_url}}"
+					],
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
