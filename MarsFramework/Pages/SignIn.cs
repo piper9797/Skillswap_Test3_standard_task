@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using MarsFramework.Global;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace MarsFramework.Pages
@@ -31,8 +32,13 @@ namespace MarsFramework.Pages
 
         internal void LoginSteps()
         {
+
+            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "SignIn");
             // navigate to the website
-            Global.GlobalDefinitions.driver.Navigate().GoToUrl("http://www.skillswap.pro/Home");
+            // Global.GlobalDefinitions.driver.Navigate().GoToUrl("http://192.168.99.100:5000/");
+
+            Global.GlobalDefinitions.driver.Navigate().GoToUrl(GlobalDefinitions.ExcelLib.ReadData(2, "Url"));
+
             //login btn
             SignIntab.Click();
             // fill in user's information
