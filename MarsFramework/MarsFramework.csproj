@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Global\docker-compose.yaml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

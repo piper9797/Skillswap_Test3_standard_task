@@ -50,6 +50,26 @@ namespace MarsFramework
 
             }
 
+
+            [Test]
+
+            public void Edit_Profile_page()
+            {
+                Profile profile = new Profile();
+
+                profile.EditProfile();
+                Thread.Sleep(200);
+
+                //verify if the time avaliability is as expected
+            //    Assert.AreEqual("Part Time", Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span")).Text.Substring(0,9));
+
+                
+
+
+            }
+
+
+
         }
     }
 }

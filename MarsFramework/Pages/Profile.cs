@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
+using System.Threading;
 
 namespace MarsFramework
 {
@@ -13,40 +15,36 @@ namespace MarsFramework
 
         #region  Initialize Web Elements 
         //Click on Edit button
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Part Time')]//i[@class='right floated outline small write icon']")]
+        [FindsBy(How = How.XPath, Using = "(//i[contains(@class,'right floated outline small write icon')])[1]")]
         private IWebElement AvailabilityTimeEdit { get; set; }
 
         //Click on Availability Time dropdown
         [FindsBy(How = How.Name, Using = "availabiltyType")]
         private IWebElement AvailabilityTime { get; set; }
 
-        //Click on Availability Time option
-        [FindsBy(How = How.XPath, Using = "//option[@value='0']")]
-        private IWebElement AvailabilityTimeOpt { get; set; }
-
+    
         //Click on Availability Hour dropdown
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[1]/div/div[3]/div")]
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[3]/div/span/i")]
         private IWebElement AvailabilityHours { get; set; }
 
+        //Click on Availability Hour option
+        [FindsBy(How = How.Name, Using = "availabiltyHour")]
+        private IWebElement AvailabilityHoursOpt { get; set; }
+
+
         //Click on salary
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[1]/div/div[4]/div")]
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/i")]
         private IWebElement Salary { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/select")]
+        private IWebElement SalaryOpt { get; set; }
+
 
         //Click on Location
         [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[2]/div/div[2]/div")]
         private IWebElement Location { get; set; }
 
-        //Choose Location
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[2]/div/div[2]/div/div[2]")]
-        private IWebElement LocationOpt { get; set; }
-
-        //Click on City
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[2]/div/div[3]/div")]
-        private IWebElement City { get; set; }
-
-        //Choose City
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[2]/div/div[3]/div/div[2]")]
-        private IWebElement CityOpt { get; set; }
+      
 
         //Click on Add new to add new Language
         [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div")]
@@ -153,17 +151,73 @@ namespace MarsFramework
         private IWebElement AddCerti { get; set; }
 
         //Add Desctiption
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[8]/div/div[2]/div[1]/textarea")]
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[3]/div/div/div/h3/span/i")]
         private IWebElement Description { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//textarea[@name='value']")]
+        private IWebElement DescriptionTextArea { get; set; }
+       
+
         //Click on Save Button
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[8]/div/div[4]/span/button[1]")]
-        private IWebElement Save { get; set; }
+        [FindsBy(How = How.XPath, Using = "//button[@class='ui teal button' and @type='button']")]
+        private IWebElement DesSave { get; set; }
 
         #endregion
 
         internal void EditProfile()
         {
+            //edit availability
+            Thread.Sleep(1000);
+
+            AvailabilityTimeEdit.Click();
+            AvailabilityTime.Click();
+            var selectTime = new SelectElement(AvailabilityTime);
+            selectTime.SelectByText("Part Time");
+
+            //edit the hours
+            AvailabilityHours.Click();
+            AvailabilityHoursOpt.Click();
+            var selectHours = new SelectElement(AvailabilityHoursOpt);
+            Thread.Sleep(200);
+            selectHours.SelectByText("As needed");
+
+            //edit Earn Target
+            Thread.Sleep(1000);
+            Salary.Click();
+            SalaryOpt.Click();
+            var selectSelary = new SelectElement(SalaryOpt);
+            Thread.Sleep(200);
+            selectSelary.SelectByText("More than $1000 per month");
+
+            //edit desciption
+            Thread.Sleep(600);
+            Description.Click();
+            DescriptionTextArea.Clear();
+            DescriptionTextArea.SendKeys("A good tester. That is me!");
+            DesSave.Click();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
     }
