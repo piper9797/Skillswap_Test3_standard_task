@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using MarsFramework.Global;
+using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System.Threading;
@@ -22,7 +24,7 @@ namespace MarsFramework
         [FindsBy(How = How.Name, Using = "availabiltyType")]
         private IWebElement AvailabilityTime { get; set; }
 
-    
+
         //Click on Availability Hour dropdown
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[3]/div/span/i")]
         private IWebElement AvailabilityHours { get; set; }
@@ -36,55 +38,47 @@ namespace MarsFramework
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/i")]
         private IWebElement Salary { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/select")]
+        [FindsBy(How = How.Name, Using = "availabiltyTarget")]
         private IWebElement SalaryOpt { get; set; }
 
-
-        //Click on Location
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[2]/div/div[2]/div")]
-        private IWebElement Location { get; set; }
-
-      
-
+        //------------------------------------------------------------------------------------
         //Click on Add new to add new Language
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div")]
+        [FindsBy(How = How.XPath, Using = "(//div[@class='ui teal button '][contains(.,'Add New')])[1]")]
         private IWebElement AddNewLangBtn { get; set; }
 
         //Enter the Language on text box
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/div/div[1]/input")]
+        [FindsBy(How = How.XPath, Using = "//input[@name='name']")]
         private IWebElement AddLangText { get; set; }
 
         //Enter the Language on text box
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/div/div[2]/select")]
-        private IWebElement ChooseLang { get; set; }
-
-        //Enter the Language on text box
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/div/div[2]/select/option[3]")]
+        [FindsBy(How = How.XPath, Using = "(//div[contains(.,'Add New')])[11]")]
         private IWebElement ChooseLangOpt { get; set; }
 
         //Add Language
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/div/div[3]/input[1]")]
+        [FindsBy(How = How.XPath, Using = "//input[@value='Add']")]
         private IWebElement AddLang { get; set; }
+        //------------------------------------------------------------------------------------
+
+        //change to skill page
+        [FindsBy(How = How.XPath, Using = "//a[@class='item'][contains(.,'Skills')]")]
+        private IWebElement NewSkillPage { get; set; }
 
         //Click on Add new to add new skill
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[4]/div/div[2]/div/table/thead/tr/th[3]/div")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='ui teal button'][contains(.,'Add New')]")]
         private IWebElement AddNewSkillBtn { get; set; }
 
         //Enter the Skill on text box
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[4]/div/div[2]/div/div/div[1]/input")]
+        [FindsBy(How = How.XPath, Using = "//input[@type='text' and @name='name']")]
         private IWebElement AddSkillText { get; set; }
 
         //Click on skill level dropdown
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[4]/div/div[2]/div/div/div[2]/select")]
+        [FindsBy(How = How.XPath, Using = "//select[@name='level']")]
         private IWebElement ChooseSkill { get; set; }
 
-        //Choose the skill level option
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[4]/div/div[2]/div/div/div[2]/select/option[3]")]
-        private IWebElement ChooseSkilllevel { get; set; }
-
         //Add Skill
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[4]/div/div[2]/div/div/span/input[1]")]
+        [FindsBy(How = How.XPath, Using = "//input[@value='Add']")]
         private IWebElement AddSkill { get; set; }
+        //------------------------------------------------------------------------------------
 
         //Click on Add new to Educaiton
         [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/table/thead/tr/th[6]/div")]
@@ -156,7 +150,7 @@ namespace MarsFramework
 
         [FindsBy(How = How.XPath, Using = "//textarea[@name='value']")]
         private IWebElement DescriptionTextArea { get; set; }
-       
+
 
         //Click on Save Button
         [FindsBy(How = How.XPath, Using = "//button[@class='ui teal button' and @type='button']")]
@@ -164,60 +158,106 @@ namespace MarsFramework
 
         #endregion
 
-        internal void EditProfile()
+
+        internal void Edit_Availability_Hours_Earn_Target()
         {
             //edit availability
-            Thread.Sleep(1000);
-
+            Thread.Sleep(2000);
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", AvailabilityTimeEdit.Text, 2000);
             AvailabilityTimeEdit.Click();
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "Name", AvailabilityTime.Text, 2000);
             AvailabilityTime.Click();
             var selectTime = new SelectElement(AvailabilityTime);
-            selectTime.SelectByText("Part Time");
+            selectTime.SelectByText("Full Time");
 
             //edit the hours
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", AvailabilityHours.Text, 2000);
             AvailabilityHours.Click();
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "Name", AvailabilityHoursOpt.Text, 2000);
             AvailabilityHoursOpt.Click();
             var selectHours = new SelectElement(AvailabilityHoursOpt);
-            Thread.Sleep(200);
             selectHours.SelectByText("As needed");
 
             //edit Earn Target
-            Thread.Sleep(1000);
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", Salary.Text, 2000);
             Salary.Click();
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "Name", SalaryOpt.Text, 2000);
             SalaryOpt.Click();
             var selectSelary = new SelectElement(SalaryOpt);
-            Thread.Sleep(200);
             selectSelary.SelectByText("More than $1000 per month");
 
             //edit desciption
-            Thread.Sleep(600);
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", Description.Text, 2000);
             Description.Click();
             DescriptionTextArea.Clear();
             DescriptionTextArea.SendKeys("A good tester. That is me!");
             DesSave.Click();
+        }
+
+
+        internal void Add_Languages()
+        {
+            //read data from the excel
+            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "AddNewLanguages");
+            Thread.Sleep(2000);
+            //add the language
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", AddNewSkillBtn.Text, 2000);
+            AddNewLangBtn.Click();
+            AddLangText.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Language"));
+            ChooseSkill.Click();
+            var chooseSkillOpt = new SelectElement(ChooseSkill);
+            chooseSkillOpt.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "Level"));
+            AddSkill.Click();
+        }
+
+        internal void Add_Skills()
+        {
+
+            //read data from the excel
+            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "AddSkills");
+            Thread.Sleep(2000);
+
+            // look up if there is a repeated data
+
+            NewSkillPage.Click();
+            //add a new skill
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", AddNewSkillBtn.Text, 2000);
+            AddNewSkillBtn.Click();
+            AddSkillText.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Skill"));
+            ChooseSkill.Click();
+            var chooseSkillOpt = new SelectElement(ChooseSkill);
+            chooseSkillOpt.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "Level"));
+            AddSkill.Click();
 
 
 
 
+            bool judge = true;
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", AddNewSkillBtn.Text, 2000);
+            IWebElement skillContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[1]/tr/td[1]"));
 
+           
+            
+            while (judge)
+            {
+                for (int j = 1; j <= 10; j++)
+                {
+                    IWebElement levelContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[1]/tr/td[2]"));
+                    if (skillContent.Text.Equals("postman"))
+                    {
+                        if (levelContent.Text.Equals("Beginner"))
+                        {
+                            judge = false;
+                            Assert.IsFalse(judge);
+                            break;
+                        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    }
+                    j++;
+                }
+                judge = false;
+                Assert.IsFalse(judge);
+            }
 
         }
     }

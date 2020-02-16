@@ -35,15 +35,13 @@ namespace MarsFramework.Pages
 
             GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "SignIn");
             // navigate to the website
-            // Global.GlobalDefinitions.driver.Navigate().GoToUrl("http://192.168.99.100:5000/");
-
             Global.GlobalDefinitions.driver.Navigate().GoToUrl(GlobalDefinitions.ExcelLib.ReadData(2, "Url"));
 
             //login btn
             SignIntab.Click();
             // fill in user's information
-            Email.SendKeys("mvpstudio.qa@gmail.com");
-            Password.SendKeys("SydneyQa2018");
+            Email.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Username"));
+            Password.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Password"));
             // click the login btn 
             LoginBtn.Click();
             
