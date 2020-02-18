@@ -188,6 +188,7 @@ namespace MarsFramework
             //edit desciption
             GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", Description.Text, 2000);
             Description.Click();
+            DescriptionTextArea.Click();
             DescriptionTextArea.Clear();
             DescriptionTextArea.SendKeys("A good tester. That is me!");
             DesSave.Click();

@@ -33,8 +33,7 @@ namespace MarsFramework.Pages
 
         internal void Listings()
         {
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "ManageListings");
+            
 
 
         }
