@@ -80,42 +80,135 @@ namespace MarsFramework
             {
                 Profile profile = new Profile();
                 profile.Add_Skills();
-
-               
               
-                /*GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", "//th[@xpath='1'][contains(.,'Skill')]", 9000);
-                var newSkill = Global.GlobalDefinitions.driver.FindElement(By.XPath("//th[@xpath='1'][contains(.,'Skill')]"));
 
-
+                //after clicking the "x" button in the pop window.Wait 1 sec to show all the original paths
+                Thread.Sleep(1000);
                 bool judge = true;
-                
+                GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "AddSkills");
+
+                //Asserstion
                 while (judge)
                 {
-                    for (int i = 1; i <= 10; i++)
+
+                    for (int j = 1; j <= 5; j++)
                     {
+                        //each skill
+                        IWebElement skillContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody["+j+"]/tr/td[1]"));
+                        //each level
+                        IWebElement levelContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[" + j + "]/tr/td[2]"));
 
-                        GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", newSkill.Text, 2000);
-
-                        IWebElement skillContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[" + i + "]/tr/td[1]"));
-
-                        IWebElement levelContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[" + i + "/tr/td[2]"));
-
-                        if (skillContent.Text.Equals("postman"))
+                        //If we can find the content we just added, we can assert the same false to them, so it can break the while statement and make sure the assertion is right
+                        if (skillContent.Text.Equals(GlobalDefinitions.ExcelLib.ReadData(2, "Skill")))
                         {
-                            if (levelContent.Text.Equals("Beginner"))
+                            if (levelContent.Text.Equals(GlobalDefinitions.ExcelLib.ReadData(2, "Level")))
                             {
                                 judge = false;
                                 Assert.IsFalse(judge);
+                                return;
                             }
 
                         }
-                        i++;
+                        j++;
                     }
+                    //if we cannot find that, we assert a wrong value
                     judge = false;
                     Assert.IsTrue(judge);
-                }*/
+                }
+
             }
 
+            [Test]
+
+            public void Profile_page_Add_Education()
+            {
+                Profile profile = new Profile();
+                profile.Add_Education();
+                //after clicking the "x" button in the pop window.Wait 1 sec to show all the original paths
+                Thread.Sleep(1000);
+                bool judge = true;
+                GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "AddEduction");
+
+                //Asserstion
+                while (judge)
+                {
+
+                    for (int j = 1; j <= 5; j++)
+                    {
+                        
+                        IWebElement univeristyContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[" + j + "]/tr/td[2]"));
+
+                        //If we can find the content we just added, we can assert the same false to them, so it can break the while statement and make sure the assertion is right
+                        
+                            if (univeristyContent.Text.Equals(GlobalDefinitions.ExcelLib.ReadData(2, "university")))
+                            {
+                                judge = false;
+                                Assert.IsFalse(judge);
+                                return;
+                       
+                        }
+                        j++;
+                    }
+                    //if we cannot find that, we assert a wrong value
+                    judge = false;
+                    Assert.IsTrue(judge);
+                }
+
+
+            }
+
+
+            [Test]
+
+            public void Profile_page_Add_Certification()
+            {
+                Profile profile = new Profile();
+                profile.Add_Certifications();
+                //after clicking the "x" button in the pop window.Wait 1 sec to show all the original paths
+                Thread.Sleep(1000);
+                bool judge = true;
+                GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "AddCertifications");
+
+                //Asserstion
+                while (judge)
+                {
+
+                    for (int j = 1; j <= 5; j++)
+                    {
+                     
+                        IWebElement univeristyContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody[" + j + "]/tr/td[1]"));
+
+                        //If we can find the content we just added, we can assert the same false to them, so it can break the while statement and make sure the assertion is right
+                        if (univeristyContent.Text.Equals("Advanced Certificate"))
+                        {
+                            judge = false;
+                            Assert.IsFalse(judge);
+                            return;
+
+                        }
+
+                        
+                        j++;
+                    }
+                    //if we cannot find that, we assert a wrong value
+                    judge = false;
+                    Assert.IsTrue(judge);
+                }
+
+
+            }
+
+       
+
+
+
+            [Test]
+
+            public void Search_Skill_by_Categories()
+            {
+               
+
+            }
 
 
 

@@ -1,22 +1,18 @@
-version: "2"
-
+version: "3"
 services:
   mars.web.app:
     image: mvpstudionz/mars.web.app:toolbox
     ports:
       - "5000:5000"
-
   mars.service.identity:
-    image: justinphamnz/mars.services.identity
+    image: mvpstudionz/mars.service.identity
     ports:
       - "60968:60968"
-
   mars.service.listing:
-    image: justinphamnz/mars.services.listing
+    image: mvpstudionz/mars.service.listing
     ports:
       - "51689:51689"
-
   mars.service.profile:
-    image: justinphamnz/mars.services.profile
+    image: mvpstudionz/mars.service.profile
     ports:
       - "60190:60190"

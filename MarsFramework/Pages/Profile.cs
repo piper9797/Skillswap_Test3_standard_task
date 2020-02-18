@@ -80,69 +80,68 @@ namespace MarsFramework
         private IWebElement AddSkill { get; set; }
         //------------------------------------------------------------------------------------
 
+        //Click on Educaiton Page
+        [FindsBy(How = How.XPath, Using = "//a[@class='item' and @data-tab='third']")]
+        private IWebElement Education { get; set; }
+       
         //Click on Add new to Educaiton
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/table/thead/tr/th[6]/div")]
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/thead/tr/th[6]/div")]
         private IWebElement AddNewEducation { get; set; }
 
         //Enter university in the text box
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[1]/div[1]/input")]
+        [FindsBy(How = How.Name, Using = "instituteName")]
         private IWebElement EnterUniversity { get; set; }
 
         //Choose the country
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[1]/div[2]/select")]
+        [FindsBy(How = How.Name, Using = "country")]
         private IWebElement ChooseCountry { get; set; }
 
-        //Choose the skill level option
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[1]/div[2]/select/option[6]")]
-        private IWebElement ChooseCountryOpt { get; set; }
 
         //Click on Title dropdown
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[2]/div[1]/select")]
+        [FindsBy(How = How.Name, Using = "title")]
         private IWebElement ChooseTitle { get; set; }
 
-        //Choose title
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[2]/div[1]/select/option[5]")]
-        private IWebElement ChooseTitleOpt { get; set; }
-
         //Degree
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[2]/div[2]/input")]
+        [FindsBy(How = How.Name, Using = "degree")]
         private IWebElement Degree { get; set; }
 
         //Year of graduation
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[2]/div[3]/select")]
+        [FindsBy(How = How.Name, Using = "yearOfGraduation")]
         private IWebElement DegreeYear { get; set; }
 
-        //Choose Year
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[2]/div[3]/select/option[4]")]
-        private IWebElement DegreeYearOpt { get; set; }
-
         //Click on Add
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[3]/div/input[1]")]
+        [FindsBy(How = How.XPath, Using = "//input[@value='Add']")]
         private IWebElement AddEdu { get; set; }
 
+        //-------------------------------------------------------------------------------------------------
+
+        // Click Certificate
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[1]/a[4]")]
+        private IWebElement Certi { get; set; }
+
         //Add new Certificate
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/table/thead/tr/th[4]/div")]
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[4]/div")]
         private IWebElement AddNewCerti { get; set; }
 
         //Enter Certification Name
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/div/div[1]/div/input")]
+        [FindsBy(How = How.XPath, Using = "//input[@name='certificationName']")]
         private IWebElement EnterCerti { get; set; }
 
         //Certified from
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/div/div[2]/div[1]/input")]
+        [FindsBy(How = How.Name, Using = "certificationFrom")]
         private IWebElement CertiFrom { get; set; }
 
         //Year
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/div/div[2]/div[2]/select")]
+        [FindsBy(How = How.Name, Using = "certificationYear")]
         private IWebElement CertiYear { get; set; }
 
-        //Choose Opt from Year
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/div/div[2]/div[2]/select/option[5]")]
-        private IWebElement CertiYearOpt { get; set; }
 
         //Add Ceritification
-        [FindsBy(How = How.XPath, Using = "//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/div/div[3]/input[1]")]
+        [FindsBy(How = How.XPath, Using = "//input[@value='Add']")]
         private IWebElement AddCerti { get; set; }
+
+
+        //--------------------------------------------------------------------------------------------
 
         //Add Desctiption
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/section[2]/div/div/div/div[3]/div/div/div/h3/span/i")]
@@ -228,37 +227,68 @@ namespace MarsFramework
             var chooseSkillOpt = new SelectElement(ChooseSkill);
             chooseSkillOpt.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "Level"));
             AddSkill.Click();
+            Thread.Sleep(1000);
+            //close the pop up window
+            GlobalDefinitions.driver.FindElement(By.XPath("//a[@href ='#']")).Click();
+        }
+
+        internal void Add_Education()
+        {
+            //read data from the excel
+            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "AddEduction");
+            Thread.Sleep(1000);
+            Education.Click();
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", AddNewEducation.Text, 2000);
+            AddNewEducation.Click();
+            EnterUniversity.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "university"));
+            var countryOpt = new SelectElement(ChooseCountry);
+            countryOpt.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "country"));
+            var titleOpt = new SelectElement(ChooseTitle);
+            titleOpt.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "title"));
+            Degree.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "degree"));
+            var graduationOpt = new SelectElement(DegreeYear);
+            graduationOpt.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "graduation year"));
+            AddEdu.Click();
+            Thread.Sleep(1000);
+            //close the pop up window
+            GlobalDefinitions.driver.FindElement(By.XPath("//a[@href ='#']")).Click();
 
 
-
-
-            bool judge = true;
-            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", AddNewSkillBtn.Text, 2000);
-            IWebElement skillContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[1]/tr/td[1]"));
-
-           
-            
-            while (judge)
-            {
-                for (int j = 1; j <= 10; j++)
-                {
-                    IWebElement levelContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[1]/tr/td[2]"));
-                    if (skillContent.Text.Equals("postman"))
-                    {
-                        if (levelContent.Text.Equals("Beginner"))
-                        {
-                            judge = false;
-                            Assert.IsFalse(judge);
-                            break;
-                        }
-
-                    }
-                    j++;
-                }
-                judge = false;
-                Assert.IsFalse(judge);
-            }
 
         }
+
+
+        internal void Add_Certifications()
+        { 
+            //read data from the excel
+            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "AddCertifications");
+            Thread.Sleep(2000);
+            Certi.Click();
+            AddNewCerti.Click();
+            GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", EnterCerti.Text, 2000);
+            EnterCerti.SendKeys("Advanced Certificate");
+           // EnterCerti.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "certification"));
+            CertiFrom.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "From"));
+            var yearOpt = new SelectElement(CertiYear);
+            yearOpt.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "year"));
+            AddCerti.Click();
+            Thread.Sleep(1000);
+            //close the pop up window
+            GlobalDefinitions.driver.FindElement(By.XPath("//a[@href ='#']")).Click();
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -126,6 +126,7 @@
     <Compile Include="Global\Base.cs" />
     <Compile Include="Global\GlobalDefinitions.cs" />
     <Compile Include="Pages\ManageListings.cs" />
+    <Compile Include="Pages\Search_page.cs" />
     <Compile Include="Pages\ShareSkill.cs" />
     <Compile Include="Pages\SignIn.cs" />
     <Compile Include="Pages\SignUp.cs" />
@@ -144,7 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Global\docker-compose.yaml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
