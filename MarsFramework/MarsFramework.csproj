@@ -125,8 +125,10 @@
     </Compile>
     <Compile Include="Global\Base.cs" />
     <Compile Include="Global\GlobalDefinitions.cs" />
+    <Compile Include="Pages\Chat.cs" />
     <Compile Include="Pages\ManageRequest.cs" />
     <Compile Include="Pages\ManageListings.cs" />
+    <Compile Include="Pages\Notifications.cs" />
     <Compile Include="Pages\Search_page.cs" />
     <Compile Include="Pages\ShareSkill.cs" />
     <Compile Include="Pages\SignIn.cs" />

@@ -208,6 +208,9 @@ namespace MarsFramework
             var chooseSkillOpt = new SelectElement(ChooseSkill);
             chooseSkillOpt.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "Level"));
             AddSkill.Click();
+            Thread.Sleep(1000);
+            //close the pop up window
+            GlobalDefinitions.driver.FindElement(By.XPath("//a[@href ='#']")).Click();
         }
 
         internal void Add_Skills()

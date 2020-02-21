@@ -69,9 +69,37 @@ namespace MarsFramework
             {
                 Profile profile = new Profile();
                 profile.Add_Languages();
-                var newLanguage = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[1]"));
-                GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", newLanguage.Text, 2000);
-                Assert.AreEqual("Mandarin", newLanguage.Text);
+
+                //after clicking the "x" button in the pop window.Wait 1 sec to show all the original paths
+                Thread.Sleep(1000);
+                bool judge = true;
+                GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "AddNewLanguages");
+
+                //Asserstion
+                while (judge)
+                {
+
+                    for (int j = 1; j <= 5; j++)
+                    {
+                        //each language
+                        IWebElement languageContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[" + j + "]/tr/td[1]"));
+                         
+                        //If we can find the content we just added, we can assert the same false to them, so it can break the while statement and make sure the assertion is right
+                        if (languageContent.Text.Equals(GlobalDefinitions.ExcelLib.ReadData(2, "Language")))
+                        {
+                           
+                                judge = false;
+                                Assert.IsFalse(judge);
+                                return;
+                            
+
+                        }
+                        j++;
+                    }
+                    //if we cannot find that, we assert a wrong value
+                    judge = false;
+                    Assert.IsTrue(judge);
+                }
             }
 
             [Test]
@@ -221,25 +249,57 @@ namespace MarsFramework
 
 
 
-
-
-
-
-
-
-
             [Test]
 
             public void Search_Skill_by_Categories()
             {
-               
+                Search_page search_page = new Search_page();
+                search_page.SearchSearch_Skill_by_Categories();
+                Thread.Sleep(1000);
+                Assert.IsNotNull(Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div/section/div/div[2]/div/div[2]/div/div/div[1]")).Text);
+
+            }
+
+            [Test]
+            public void Search_Skill_by_Fliter()
+            {
+                Search_page search_page = new Search_page();
+                search_page.SearchSearch_Skill_by_filter();
+                Thread.Sleep(1000);
+                Assert.IsNotNull(Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div/section/div/div[2]/div/div[2]/div/div/div[1]")).Text);
 
             }
 
 
+            [Test]
+            public void Notification_See_and_Select_All_Make_As_Read()
+            {
+                Notifications notifications = new Notifications();
+                notifications.Notification_See_and_Select_All_Make_As_Read();
+                Thread.Sleep(1000);
+                Assert.AreEqual("Notifications", Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/a/h1")).Text);
 
+            }
 
+            [Test]
+            public void Notification_select_one()
+            {
+                Notifications notifications = new Notifications();
+                notifications.Notification_select_one();
+                Thread.Sleep(1000);
+                Assert.AreEqual("Category", Global.GlobalDefinitions.driver.FindElement(By.XPath("//th[contains(text(),'Category')]")).Text);
 
+            }
+
+            [Test]
+            public void Chat()
+            {
+                Chat chat = new Chat();
+                chat.chat();
+                Thread.Sleep(1000);
+                Assert.AreEqual("Bye", Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div/div[2]/div/div/span/div[19]/div/div")).Text);
+
+            }
 
 
         }
