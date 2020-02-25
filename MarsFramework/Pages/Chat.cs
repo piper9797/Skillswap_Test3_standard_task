@@ -16,6 +16,11 @@ namespace MarsFramework.Pages
             PageFactory.InitElements(Global.GlobalDefinitions.driver, this);
         }
 
+
+
+
+
+
         //Click on chat button
         [FindsBy(How = How.LinkText, Using = "Chat")]
         private IWebElement chat_button { get; set; }

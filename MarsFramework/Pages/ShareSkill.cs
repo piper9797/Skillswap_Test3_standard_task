@@ -152,10 +152,11 @@ namespace MarsFramework.Pages
             GlobalDefinitions.driver.FindElement(By.XPath("//input[contains(@name,'title')]")).Clear();
             GlobalDefinitions.driver.FindElement(By.XPath("//input[contains(@name,'title')]")).SendKeys("Arts");
             //save
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
             GlobalDefinitions.driver.FindElement(By.XPath("//input[@value='Save']")).Click();
-            //GlobalDefinitions.WaitForElement(Global.GlobalDefinitions.driver, "XPath", , 5000);
-            //Save.Click();
+            Thread.Sleep(5000);
+           
+
 
         }
 

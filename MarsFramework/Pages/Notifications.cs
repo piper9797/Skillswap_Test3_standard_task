@@ -14,7 +14,7 @@ namespace MarsFramework.Pages
 
     class Notifications
     {
-        public Notifications()
+      public Notifications()
         {
             PageFactory.InitElements(Global.GlobalDefinitions.driver, this);
         }

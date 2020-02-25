@@ -5,6 +5,8 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using RelevantCodes.ExtentReports;
 using System;
+using System.Threading;
+using TechTalk.SpecFlow;
 using static MarsFramework.Global.GlobalDefinitions;
 
 namespace MarsFramework.Global
@@ -70,7 +72,7 @@ namespace MarsFramework.Global
             // Screenshot
             String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");//AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
 
-          
+
             test = extent.StartTest("Test pass");
 
             test.Log(LogStatus.Info, "Image example: " + img);
@@ -83,6 +85,38 @@ namespace MarsFramework.Global
             GlobalDefinitions.driver.Quit();
         }
         #endregion
+
+        // [BeforeScenario]
+        public static void Initialize()
+        {
+            //Defining the browser
+            GlobalDefinitions.driver = new ChromeDriver();
+            // TurnOnWait();
+            //Maximise the window
+            driver.Manage().Window.Maximize();
+            Thread.Sleep(500);
+            //Call the Login Class    
+            SignIn signIn = new SignIn();
+            signIn.LoginSteps();
+
+        }
+
+        //[AfterScenario]
+
+        public static void End()
+        {
+            GlobalDefinitions.driver.Close();
+
+        }
+
+
+
+        //Implicit Wait
+        public static void TurnOnWait()
+        {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+        }
 
     }
 }

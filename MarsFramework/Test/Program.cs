@@ -58,6 +58,7 @@ namespace MarsFramework
             {
                 Profile profile = new Profile();
                 profile.Edit_Availability_Hours_Earn_Target();
+                Thread.Sleep(1000);
                 //verify if the time avaliability is as expected
                 Assert.AreEqual("Full Time", Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span")).Text.Substring(0, 9));
 
@@ -82,10 +83,10 @@ namespace MarsFramework
                     for (int j = 1; j <= 5; j++)
                     {
                         //each language
-                        IWebElement languageContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[" + j + "]/tr/td[1]"));
+                        String languageContent = Global.GlobalDefinitions.driver.FindElement(By.XPath("/html/body/div[1]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[" + j + "]/tr/td[1]")).Text;
                          
                         //If we can find the content we just added, we can assert the same false to them, so it can break the while statement and make sure the assertion is right
-                        if (languageContent.Text.Equals(GlobalDefinitions.ExcelLib.ReadData(2, "Language")))
+                        if (languageContent.Equals(GlobalDefinitions.ExcelLib.ReadData(2, "Language")))
                         {
                            
                                 judge = false;

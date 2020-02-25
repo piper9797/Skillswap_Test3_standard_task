@@ -192,6 +192,10 @@ namespace MarsFramework
             DescriptionTextArea.Clear();
             DescriptionTextArea.SendKeys("A good tester. That is me!");
             DesSave.Click();
+            Thread.Sleep(2000);
+            //close the pop up window
+            GlobalDefinitions.driver.FindElement(By.XPath("//a[@href ='#']")).Click();
+
         }
 
 
@@ -208,7 +212,7 @@ namespace MarsFramework
             var chooseSkillOpt = new SelectElement(ChooseSkill);
             chooseSkillOpt.SelectByText(GlobalDefinitions.ExcelLib.ReadData(2, "Level"));
             AddSkill.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             //close the pop up window
             GlobalDefinitions.driver.FindElement(By.XPath("//a[@href ='#']")).Click();
         }
@@ -282,17 +286,6 @@ namespace MarsFramework
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
+       
     }
 }

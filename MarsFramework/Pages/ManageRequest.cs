@@ -16,7 +16,7 @@ namespace MarsFramework.Pages
     {
         public Manage_Request()
         {
-            PageFactory.InitElements(Global.GlobalDefinitions.driver, this);
+           PageFactory.InitElements(Global.GlobalDefinitions.driver, this);
         }
 
         //Click on manage requests
@@ -42,7 +42,7 @@ namespace MarsFramework.Pages
             Actions action = new Actions(Global.GlobalDefinitions.driver);
             action.MoveToElement(manage_Request).Perform();
             manage_Request.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             receive_Request.Click();
         }
 
